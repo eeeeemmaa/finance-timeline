@@ -225,9 +225,9 @@ const STATIC = [
   {date:'2026-05-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 5월 결산
   {date:'2026-06-04',cat:'close',title:'5월 결산 결의서 상신 마감',note:'선거일(6/3) 임시공휴일로 하루 연장',badge:'결의서'},
-  // 6월
+  // 6�월
   {date:'2026-06-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'6월분',badge:'정기'},
-  {date:'2026-06-23',cat:'pay',  title:'법인카드 정산',note:'5월 사용분 · 모든 법인카드 지급요청일 6/23 통일',badge:'정기'},
+  {date:'2026-06-23',cat:'pay',  title:'법인카드 정산',note:'5월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-06-27',cat:'audit',title:'벤처기업확인서 만료 · 갱신 필요',note:'제20230628030025호 만료 · 스톡옵션 과세특례 유지 위해 만료 전 갱신 필수 (법무팀 협업)',badge:'벤처기업'},
   {date:'2026-06-30',cat:'bw',   title:'스톡옵션 주금 납입',note:'임직원 스톡옵션 행사 · 주금 납입 마감',badge:'주금납입'},
   {date:'2026-06-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
@@ -292,41 +292,21 @@ for (let closeMonth = 7; closeMonth <= 12; closeMonth++) {
   });
   DYNAMIC.push({
     date: toYMD(d10), cat:'close',
-    title: `${closeMonth}월 결산 장부 마감 (10영업일)`,
-    note: `익월 10영업일 기준`,
-    badge:'장부마감'
-  });
-}
-
-// 결산보고 일정: 4주차 금요일(투자사)을 기준으로, 그 주 수(CFO→경영진), 그 주 월(재무→CFO)
-// 재고·물류비 조정 지급: 매월 10일, 20일 (계약서 명시 건 · 휴일 시 D+1 영업일)
-function nextBizFrom(year, month, day) {
-  let d = new Date(year, month-1, day);
-  while (!isBizDay(d)) d = addDays(d, 1);
-  return d;
-}
-for (let m = 1; m <= 12; m++) {
-  const d10 = nextBizFrom(2026, m, 10);
-  const d20 = nextBizFrom(2026, m, 20);
-  DYNAMIC.push({date:toYMD(d10), cat:'pay', title:'재고·물류비 지급 (계약 건)', note:`매월 10일 기준 · 계약서 명시 건 · 휴일 시 D+1`,badge:'조정지불'});
-  DYNAMIC.push({date:toYMD(d20), cat:'pay', title:'재고·물류비 지급 (계약 건)', note:`매월 20일 기준 · 계약서 명시 건 · 휴일 시 D+1`,badge:'조정지불'});
-}
-
-// 수시 지불: 매주 목요일 (영업일만 · 공휴일·주말 제외)
-(function() {
-  let d = new Date(2026, 0, 1);
-  while (d.getDay() !== 4) d = addDays(d, 1); // 첫 목요일
-  while (d.getFullYear() === 2026) {
-    if (isBizDay(d)) {
-      DYNAMIC.push({date:toYMD(d), cat:'pay', title:'수시 지불', note:'전주 월~금 소속 리더 완결 건 → 차주 목요일 지급',badge:'수시지불'});
-    }
-    d = addDays(d, 7);
-  }
-})();
-
-// 결산보고: 6월(5월분)부터 12월(11월분)까지 — 4주차 금요일 기준, 제목은 전월분 기재
-for (let m = 6; m <= 12; m++) {
-  const fri4 = nthWeekday(2026, m, 5, 4); // 4번째 금요일 (투자사 보고 기준일)
+    title: `${closeMonth}월 결산 장부 마감 (10영업일)`�(������є聃�vײnP��òb�^�v����ò���(���������蟲z�����#��@�(�����)�((�����ò
+î�Ӫ΀��v�T�Ӳ�� ���#�jS�v�.���p��f���T��v���ò��r�p�����������"`�
+?�K����b��������������nP��z���ӊI
+<�(����z��΃
+߮��c�����ò�T�����$胮���nP��òv��òv������V��p����.p���Ѓ
+܃�rӲv���.p��ă�b�^�v�)�չ�ѥ�������	��ɽ��啅Ȱ����Ѡ����䤁�(����Ё��􁹕܁�є�啅Ȱ����Ѡ�İ�����(��ݡ��������	���䡐�����􁅑���̡���Ĥ�(��ɕ��ɸ���)�)��Ȁ���Ё����쁴�����쁴�����(������Ё����􁹕��	��ɽ�����ذ��������(������Ё����􁹕��	��ɽ�����ذ��������(��e95%���͠�푅є�ѽe5�������������䜰�ѥѱ�蟲z��΃
+߮��c�������$�����V��Ф�����є郮���nP��òv����ò� �
+܃���V��p����.p���Ѓ
+܃�rӲv���.p��ŀ������蟲�ò�W���� ����(��e95%���͠�푅є�ѽe5�������������䜰�ѥѱ�蟲z��΃
+߮��c�������$�����V��Ф�����є郮���nP��òv����ò� �
+܃���V��p����.p���Ѓ
+܃�rӲv���.p��ŀ������蟲�ò�W���� ����)�((����"c�.p����� 胮����������jS�v����b�^�v�0�
+܃��׶rӲv�
+߲��@���s�f�(��չ�ѥ������(����Ё��􁹕܁�є����ذ����Ĥ�(��ݡ�����������䠤����Ф���􁅑���̡���Ĥ쀼���ʬ�����jS�v�(��ݡ����������ձ�e��Ƞ��������ؤ��(����������	���䡐����(������e95%���͠�푅є�ѽe5�����������䜰�ѥѱ�蟲"c�.p����� �����є蟲������nQ��� ��3�4�����6P��f������Ѓ�H��£��������jS�v������$�������蟲"c�.s���� ����(�����(������􁅑���̡���ܤ�(���)�����((�����ò
+î�Ӫ΀�۲nP�ײnS���������˲nP��ǲnS�����3�� ��P�Ӳ�� ���#�jS�v����ò� ����s����v ����nS�����òz�)��Ȁ���Ё����쁴�����쁴�����(������Ё�ɤЀ�ѡ]���������ذ����԰�Ф쀼��Ӯ�#�����째 금요일 (투자사 보고 기준일)
   const wed  = addDays(fri4, -2);           // 같은 주 수요일
   const mon  = addDays(fri4, -4);           // 같은 주 월요일
 
@@ -378,4 +358,46 @@ function render(cat) {
     block.className = 'month-block';
     const hdr = document.createElement('div');
     hdr.className = 'month-header';
-    hdr.innerHTML = `<span class="month-label">${m}월</span><span class=
+    hdr.innerHTML = `<span class="month-label">${m}월</span><span class="month-line"></span><span class="month-count">${visible.length}건</span>`;
+    block.appendChild(hdr);
+    const grid = document.createElement('div');
+    grid.className = 'events-grid';
+    visible.sort((a,b)=>a.date.localeCompare(b.date)).forEach(e => {
+      const pd = parseDate(e.date);
+      const diff = dayDiff(pd);
+      const card = document.createElement('div');
+      card.className = `event-card cat-${e.cat}${diff < 0 ? ' dimmed' : ''}`;
+      const dow = ['일','월','화','수','목','금','토'][pd.getDay()];
+      card.innerHTML = `
+        <div class="date-col">
+          <div class="date-day">${fmtShort(e.date).split('/')[1]}</div>
+          <div class="date-mon">${fmtShort(e.date).split('/')[0]}월</div>
+          <div class="date-dow">${dow}</div>
+        </div>
+        <div class="info-col">
+          <div class="evt-title">${e.title}</div>
+          ${e.note ? `<div class="note-text">${e.note}</div>` : ''}
+          ${e.badge ? `<div class="badge-row"><span class="badge badge-${e.cat}">${e.badge}</span></div>` : ''}
+        </div>`;
+      grid.appendChild(card);
+    });
+    block.appendChild(grid);
+    timeline.appendChild(block);
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    refreshUpcoming(cat);
+    render(cat);
+  });
+});
+
+refreshUpcoming('all');
+render('all');
+</script>
+</body>
+</html>
