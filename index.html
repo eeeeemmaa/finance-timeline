@@ -387,6 +387,7 @@ function render(cat) {
       const diff = dayDiff(pd);
       const card = document.createElement('div');
       card.className = `event-card cat-${e.cat}${diff < 0 ? ' dimmed' : ''}`;
+      card.dataset.cat = e.cat;
       const dow = ['일','월','화','수','목','금','토'][pd.getDay()];
       card.innerHTML = `
         <div class="date-col">
