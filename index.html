@@ -31,7 +31,8 @@
   .filter-btn.active { color: white !important; }
   .filter-btn[data-cat="all"]   { border-color:#6c757d;color:#6c757d; } .filter-btn[data-cat="all"].active   { background:#6c757d; }
   .filter-btn[data-cat="tax"]   { border-color:#e74c3c;color:#e74c3c; } .filter-btn[data-cat="tax"].active   { background:#e74c3c; }
-  .filter-btn[data-cat="bw"]    { border-color:#8e44ad;color:#8e44ad; } .filter-btn[data-cat="bw"].active    { background:#8e44ad; }
+  .filter-btn[data-cat="invest"] { border-color:#8e44ad;color:#8e44ad; } .filter-btn[data-cat="invest"].active { background:#8e44ad; }
+  .filter-btn[data-cat="corp"]   { border-color:#5d6d7e;color:#5d6d7e; } .filter-btn[data-cat="corp"].active   { background:#5d6d7e; }
   .filter-btn[data-cat="audit"] { border-color:#2980b9;color:#2980b9; } .filter-btn[data-cat="audit"].active { background:#2980b9; }
   .filter-btn[data-cat="close"] { border-color:#27ae60;color:#27ae60; } .filter-btn[data-cat="close"].active { background:#27ae60; }
   .filter-btn[data-cat="report"]{ border-color:#e67e22;color:#e67e22; } .filter-btn[data-cat="report"].active{ background:#e67e22; }
@@ -56,7 +57,8 @@
   .event-card.today { box-shadow:0 0 0 2px #f39c12, 0 2px 8px rgba(243,156,18,.3); }
   .event-card.delayed { border-style: dashed; }
   [data-cat="tax"] .event-card, .event-card[data-cat="tax"]     { border-color:#e74c3c; }
-  [data-cat="bw"] .event-card,  .event-card[data-cat="bw"]      { border-color:#8e44ad; }
+  [data-cat="invest"] .event-card,  .event-card[data-cat="invest"]  { border-color:#8e44ad; }
+  [data-cat="corp"] .event-card,   .event-card[data-cat="corp"]   { border-color:#5d6d7e; }
   [data-cat="audit"] .event-card, .event-card[data-cat="audit"] { border-color:#2980b9; }
   [data-cat="close"] .event-card, .event-card[data-cat="close"] { border-color:#27ae60; }
   [data-cat="report"] .event-card,.event-card[data-cat="report"]{ border-color:#e67e22; }
@@ -65,7 +67,8 @@
   .event-date { font-size:11px; font-weight:700; min-width:48px; color:#555; }
   .event-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
   [data-cat="tax"]    .event-dot, .event-card[data-cat="tax"]    .event-dot { background:#e74c3c; }
-  [data-cat="bw"]     .event-dot, .event-card[data-cat="bw"]     .event-dot { background:#8e44ad; }
+  [data-cat="invest"] .event-dot, .event-card[data-cat="invest"] .event-dot { background:#8e44ad; }
+  [data-cat="corp"]   .event-dot, .event-card[data-cat="corp"]   .event-dot { background:#5d6d7e; }
   [data-cat="audit"]  .event-dot, .event-card[data-cat="audit"]  .event-dot { background:#2980b9; }
   [data-cat="close"]  .event-dot, .event-card[data-cat="close"]  .event-dot { background:#27ae60; }
   [data-cat="report"] .event-dot, .event-card[data-cat="report"] .event-dot { background:#e67e22; }
@@ -76,7 +79,8 @@
   .event-note { font-size:11px; color:#7a8099; margin-top:1px; }
   .event-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:10px; white-space:nowrap; flex-shrink:0; }
   [data-cat="tax"]    .event-badge, .event-card[data-cat="tax"]    .event-badge { background:#fdecea;color:#c0392b; }
-  [data-cat="bw"]     .event-badge, .event-card[data-cat="bw"]     .event-badge { background:#f3e8fd;color:#7d3c98; }
+  [data-cat="invest"] .event-badge, .event-card[data-cat="invest"] .event-badge { background:#f3e8fd;color:#7d3c98; }
+  [data-cat="corp"]   .event-badge, .event-card[data-cat="corp"]   .event-badge { background:#eaecee;color:#2c3e50; }
   [data-cat="audit"]  .event-badge, .event-card[data-cat="audit"]  .event-badge { background:#e8f4fd;color:#1a6fa0; }
   [data-cat="close"]  .event-badge, .event-card[data-cat="close"]  .event-badge { background:#eafaf1;color:#1e8449; }
   [data-cat="report"] .event-badge, .event-card[data-cat="report"] .event-badge { background:#fef0e6;color:#c05a00; }
@@ -108,7 +112,8 @@
 <div class="filter-bar">
   <button class="filter-btn active" data-cat="all">전체</button>
   <button class="filter-btn" data-cat="tax">🔴 세금/신고</button>
-  <button class="filter-btn" data-cat="bw">🟣 BW/대출</button>
+  <button class="filter-btn" data-cat="invest">🟣 투자/재무</button>
+  <button class="filter-btn" data-cat="corp">🔘 법인서류</button>
   <button class="filter-btn" data-cat="audit">🔵 감사</button>
   <button class="filter-btn" data-cat="close">🟢 결산</button>
   <button class="filter-btn" data-cat="report">🟠 결산보고</button>
@@ -183,23 +188,22 @@ const STATIC = [
   // 1월
   {date:'2026-01-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'1월분 (12월 사용분)',badge:'정기'},
   {date:'2026-01-23',cat:'pay',  title:'법인카드 정산',note:'12월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
-  {date:'2026-01-23',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차-1)',note:'3차 완료분 1회 · 약 9.9억 (987,840,672원)',badge:'완료'},
+  {date:'2026-01-23',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-1)',note:'3차 완료분 1회 · 약 9.9억 (987,840,672원)',badge:'완료'},
   {date:'2026-01-26',cat:'tax',  title:'2025년 2기 확정 부가세 납부',note:'앳홈 436.5M · 납부 완료',badge:'완료'},
   {date:'2026-01-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 2월
   {date:'2026-02-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'2월분',badge:'정기'},
   {date:'2026-02-19',cat:'audit',title:'외부감사 계약 확정 (예인회계법인)',note:'2026년도 감사보수 2,500만원',badge:'외부감사'},
-  {date:'2026-06-04',cat:'audit',title:'삼일회계법인 TP audit Kick-off',note:'앳홈 TP 세무조정 용역 공식 착수 · 자료 제출 요청 (IR자료, 조직도, 세무조정계산서 등)',badge:'세무자문'},
   {date:'2026-07-21',cat:'audit',title:'외부감사 현장감사 1일차',note:'09:00~18:00 · 감사인 방문',badge:'현장감사'},
   {date:'2026-07-22',cat:'audit',title:'외부감사 현장감사 2일차',note:'09:00~18:00 · 감사인 방문',badge:'현장감사'},
   {date:'2026-02-23',cat:'pay',  title:'법인카드 정산',note:'1월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-02-28',cat:'audit',title:'기말감사 자료 제출',note:'2025 FY 결산자료·재고실사 준비',badge:'기말감사'},
-  {date:'2026-02-28',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차-2)',note:'3차 완료분 2회 · 약 3.1억 (314,790,384원)',badge:'완료'},
+  {date:'2026-02-28',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-2)',note:'3차 완료분 2회 · 약 3.1억 (314,790,384원)',badge:'완료'},
   {date:'2026-02-28',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 3월
   {date:'2026-03-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'3월분',badge:'정기'},
   {date:'2026-03-23',cat:'pay',  title:'법인카드 정산',note:'2월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
-  {date:'2026-03-25',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차-3)',note:'3차 완료분 3회 · 2.5억 (250,000,000원)',badge:'완료'},
+  {date:'2026-03-25',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-3)',note:'3차 완료분 3회 · 2.5억 (250,000,000원)',badge:'완료'},
   {date:'2026-03-31',cat:'tax',  title:'법인세 신고·납부',note:'앳홈 약 19.5억 · 납부 완료',badge:'완료'},
   {date:'2026-03-31',cat:'audit',title:'외부감사 완료 목표',note:'감사보고서 수령',badge:'외부감사'},
   {date:'2026-03-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
@@ -207,7 +211,7 @@ const STATIC = [
   {date:'2026-04-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 신고파일 제출',badge:'기타소득'},
   {date:'2026-04-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'4월분',badge:'정기'},
   {date:'2026-04-23',cat:'pay',  title:'법인카드 정산',note:'3월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
-  {date:'2026-04-20',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차-4)',note:'3차 완료분 4회 · 2.5억 (250,000,000원)',badge:'완료'},
+  {date:'2026-04-20',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-4)',note:'3차 완료분 4회 · 2.5억 (250,000,000원)',badge:'완료'},
   {date:'2026-04-25',cat:'tax',  title:'부가세 1기 예정 신고·납부',note:'납부 예정액 약 14.5억',badge:'부가세'},
   {date:'2026-04-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 4월 결산 (10영업일 룰 첫 적용 — 실제 밀렸음)
@@ -215,7 +219,7 @@ const STATIC = [
   // 5월
   {date:'2026-05-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'5월분',badge:'정기'},
   {date:'2026-05-23',cat:'pay',  title:'법인카드 정산',note:'4월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
-  {date:'2026-05-31',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차-5)',note:'3차 완료분 5회 · 약 3.1억 (314,790,384원)',badge:'완료'},
+  {date:'2026-05-31',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-5)',note:'3차 완료분 5회 · 약 3.1억 (314,790,384원)',badge:'완료'},
   {date:'2026-05-31',cat:'tax',  title:'법인세 중간예납 검토',note:'직전 사업연도 기준',badge:'법인세'},
   {date:'2026-05-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 5월 결산
@@ -223,14 +227,15 @@ const STATIC = [
   // 6월
   {date:'2026-06-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'6월분',badge:'정기'},
   {date:'2026-06-23',cat:'pay',  title:'법인카드 정산',note:'5월 사용분 · 모든 법인카드 지급요청일 6/23 통일',badge:'정기'},
-  {date:'2026-06-27',cat:'audit',title:'벤처기업확인서 만료 · 갱신 필요',note:'제20230628030025호 만료 · 스톡옵션 과세특례 유지 위해 만료 전 갱신 필수 (법무팀 협업)',badge:'벤처기업'},
-  {date:'2026-06-30',cat:'bw',   title:'스톡옵션 주금 납입',note:'임직원 스톡옵션 행사 · 주금 납입 마감',badge:'주금납입'},
+  {date:'2026-06-27',cat:'corp', title:'벤처기업확인서 만료 · 갱신 필요',note:'제20230628030025호 만료 · 스톡옵션 과세특례 유지 위해 만료 전 갱신 필수 (법무팀 협업)',badge:'법인서류'},
+  {date:'2026-06-30',cat:'invest',   title:'스톡옵션 주금 납입',note:'임직원 스톡옵션 행사 · 주금 납입 마감',badge:'주금납입'},
   {date:'2026-06-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 6월 결산
-  {date:'2026-07-03',cat:'close',title:'6월 결산 장부 마감',note:'익월 10영업일 기준 · 7/3',badge:'장부마감'},
+  {date:'2026-07-03',cat:'close',title:'6월 결산 결의서 상신 마감',note:'익월 3영업일',badge:'결의서'},
+  {date:'2026-07-14',cat:'close',title:'6월 결산 장부 마감',note:'익월 10영업일',badge:'장부마감'},
   // 7월
   {date:'2026-07-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'7월분',badge:'정기'},
-  {date:'2026-07-22',cat:'bw',   title:'🚨 BW 만기 (IMMHK)',note:'잔액 약 22억 상환 · Net cash out ≈12억 · 신한은행 전환 검토 중',badge:'BW만기'},
+  {date:'2026-07-22',cat:'invest',   title:'🚨 BW 만기 (IMMHK)',note:'잔액 약 22억 상환 · Net cash out ≈12억 · 신한은행 전환 검토 중',badge:'BW만기'},
   {date:'2026-07-23',cat:'pay',  title:'법인카드 정산',note:'6월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-07-25',cat:'tax',  title:'부가세 1기 확정 신고·납부',note:'납부 예정액 약 20.3억',badge:'부가세'},
   {date:'2026-07-31',cat:'tax',  title:'배당금 수익 금융소득지급명세서 미제출 가산세',note:'금융소득지급명세서 미제출 건 가산세 납부 · 4,000만원',badge:'가산세'},
@@ -239,7 +244,7 @@ const STATIC = [
   {date:'2026-08-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'8월분',badge:'정기'},
   {date:'2026-08-23',cat:'pay',  title:'법인카드 정산',note:'7월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-08-31',cat:'tax',  title:'법인세 중간예납 납부',note:'직전 사업연도 법인세 1/2',badge:'법인세'},
-  {date:'2026-08-31',cat:'bw',   title:'대출 만기 상환 (8월분)',note:'26년 7·8·12월 만기 총 44.2억 중 일부',badge:'대출상환'},
+  {date:'2026-08-31',cat:'invest',   title:'대출 만기 상환 (8월분)',note:'26년 7·8·12월 만기 총 44.2억 중 일부',badge:'대출상환'},
   {date:'2026-08-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 9월
   {date:'2026-09-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'9월분',badge:'정기'},
@@ -247,7 +252,7 @@ const STATIC = [
   {date:'2026-09-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 10월
   {date:'2026-10-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'10월분',badge:'정기'},
-  {date:'2026-10-10',cat:'bw',   title:'스퀘어 매각대금 수입',note:'약 11.6억 수령 예정',badge:'자산매각'},
+  {date:'2026-10-10',cat:'invest',   title:'스퀘어 매각대금 수입',note:'약 11.6억 수령 예정',badge:'자산매각'},
   {date:'2026-10-23',cat:'pay',  title:'법인카드 정산',note:'9월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-10-25',cat:'tax',  title:'부가세 2기 예정 신고·납부',note:'납부 예정액 약 28.4억',badge:'부가세'},
   {date:'2026-10-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
@@ -258,8 +263,8 @@ const STATIC = [
   // 12월
   {date:'2026-12-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'12월분',badge:'정기'},
   {date:'2026-12-23',cat:'pay',  title:'법인카드 정산',note:'11월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
-  {date:'2026-12-31',cat:'bw',   title:'대출 만기 상환 (12월분)',note:'26년 7·8·12월 만기 총 44.2억 중 일부',badge:'대출상환'},
-  {date:'2026-12-31',cat:'bw',   title:'플렌테크 주식양수도 대금 (3차 잔여)',note:'3차 잔여분 · 약 59억 (5,903,398,819원)',badge:'주식양수도'},
+  {date:'2026-12-31',cat:'invest',   title:'대출 만기 상환 (12월분)',note:'26년 7·8·12월 만기 총 44.2억 중 일부',badge:'대출상환'},
+  {date:'2026-12-31',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차 잔여)',note:'3차 잔여분 · 약 59억 (5,903,398,819원)',badge:'주식양수도'},
   {date:'2026-12-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
 ];
 
@@ -287,7 +292,7 @@ for (let closeMonth = 7; closeMonth <= 12; closeMonth++) {
   });
   DYNAMIC.push({
     date: toYMD(d10), cat:'close',
-    title: `${closeMonth}월 결산 장부 마감 (10영업일)`,
+    title: `${closeMonth}월 결산 장부 마감`,
     note: `익월 10영업일 기준`,
     badge:'장부마감'
   });
