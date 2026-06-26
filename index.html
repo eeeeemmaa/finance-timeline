@@ -343,4 +343,55 @@ function render(cat) {
     grouped[key].push(e);
   });
   Object.keys(grouped).sort().forEach(key => {
-    const [,m] = key.split('-').map(N
+    const [,m] = key.split('-').map(Number);
+    const visible = grouped[key].filter(e => cat==='all' || e.cat===cat);
+    if (!visible.length) return;
+    const block = document.createElement('div');
+    block.className = 'month-block';
+    const hdr = document.createElement('div');
+    hdr.className = 'month-header';
+    hdr.innerHTML = `<span class="month-label">${m}월</span><span class="month-line"></span><span class="month-count">${visible.length}건</span>`;
+    block.appendChild(hdr);
+    const grid = document.createElement('div');
+    grid.className = 'events-grid';
+    visible.sort((a,b)=>a.date.localeCompare(b.date)).forEach(ev => {
+      const d = parseDate(ev.date);
+      const diff = dayDiff(d);
+      const isPast = diff < 0;
+      const isToday = diff === 0;
+      const card = document.createElement('div');
+      card.className = 'event-card' + (isPast?' past':'') + (isToday?' today':'') + (ev.delayed?' delayed':'');
+      card.dataset.cat = ev.cat;
+      let dateLabel = fmtShort(ev.date);
+      if (isToday) dateLabel += ' 🔴';
+      else if (diff > 0 && diff <= 14) dateLabel += ` <span style="color:#e67e22;font-weight:800">D-${diff}</span>`;
+      card.innerHTML = `
+        <div class="event-date">${dateLabel}</div>
+        <div class="event-dot"></div>
+        <div class="event-content">
+          <div class="event-title">${ev.title}</div>
+          ${ev.note?`<div class="event-note">${ev.note}</div>`:''}
+        </div>
+        <div class="event-badge">${ev.badge}</div>
+      `;
+      grid.appendChild(card);
+    });
+    block.appendChild(grid);
+    timeline.appendChild(block);
+  });
+  refreshUpcoming(cat);
+}
+
+let activeCat = 'all';
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    render(activeCat);
+  });
+});
+render(activeCat);
+</script>
+</body>
+</html>
