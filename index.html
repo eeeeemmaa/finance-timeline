@@ -386,20 +386,17 @@ function render(cat) {
       const pd = parseDate(e.date);
       const diff = dayDiff(pd);
       const card = document.createElement('div');
-      card.className = `event-card cat-${e.cat}${diff < 0 ? ' dimmed' : ''}`;
+      card.className = `event-card${diff < 0 ? ' past' : ''}${e.delayed ? ' delayed' : ''}`;
       card.dataset.cat = e.cat;
       const dow = ['일','월','화','수','목','금','토'][pd.getDay()];
       card.innerHTML = `
-        <div class="date-col">
-          <div class="date-day">${fmtShort(e.date).split('/')[1]}</div>
-          <div class="date-mon">${fmtShort(e.date).split('/')[0]}월</div>
-          <div class="date-dow">${dow}</div>
+        <span class="event-date">${fmtShort(e.date)} (${dow})</span>
+        <span class="event-dot"></span>
+        <div class="event-content">
+          <div class="event-title">${e.title}</div>
+          ${e.note ? `<div class="event-note">${e.note}</div>` : ''}
         </div>
-        <div class="info-col">
-          <div class="evt-title">${e.title}</div>
-          ${e.note ? `<div class="note-text">${e.note}</div>` : ''}
-          ${e.badge ? `<div class="badge-row"><span class="badge badge-${e.cat}">${e.badge}</span></div>` : ''}
-        </div>`;
+        ${e.badge ? `<span class="event-badge">${e.badge}</span>` : ''}`
       grid.appendChild(card);
     });
     block.appendChild(grid);
