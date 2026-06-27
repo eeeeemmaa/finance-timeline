@@ -185,14 +185,14 @@ function fmt(d) {
 // ── 정적 이벤트 ──────────────────────────────────────────────────
 const STATIC = [
   // 1월
-  {date:'2026-01-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+  {date:'2026-01-12',cat:'tax',  title:'원천세 신고·납부',note:'1월분 원천세 신고·납부 (법정기한 10일, 토요일→1/12)',badge:'원천세'},
     {date:'2026-01-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'1월분 (12월 사용분)',badge:'정기'},
   {date:'2026-01-23',cat:'pay',  title:'법인카드 정산',note:'12월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-01-23',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-1)',note:'3차 완료분 1회 · 약 9.9억 (987,840,672원)',badge:'완료'},
   {date:'2026-01-26',cat:'tax',  title:'2025년 2기 확정 부가세 납부',note:'앳홈 436.5M · 납부 완료',badge:'완료'},
   {date:'2026-01-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 2월
-  {date:'2026-02-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+  {date:'2026-02-10',cat:'tax',  title:'원천세 신고·납부',note:'2월분 원천세 신고·납부',badge:'원천세'},
     {date:'2026-02-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'2월분',badge:'정기'},
   {date:'2026-02-19',cat:'audit',title:'외부감사 계약 확정 (예인회계법인)',note:'2026년도 감사보수 2,500만원',badge:'외부감사'},
   {date:'2026-07-21',cat:'audit',title:'외부감사 현장감사 1일차',note:'09:00~18:00 · 감사인 방문',badge:'현장감사'},
@@ -202,7 +202,7 @@ const STATIC = [
   {date:'2026-02-28',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-2)',note:'3차 완료분 2회 · 약 3.1억 (314,790,384원)',badge:'완료'},
   {date:'2026-02-28',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 3월
-  {date:'2026-03-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+  {date:'2026-03-10',cat:'tax',  title:'원천세 신고·납부',note:'3월분 원천세 신고·납부',badge:'원천세'},
     {date:'2026-03-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'3월분',badge:'정기'},
   {date:'2026-03-23',cat:'pay',  title:'법인카드 정산',note:'2월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-03-25',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-3)',note:'3차 완료분 3회 · 2.5억 (250,000,000원)',badge:'완료'},
@@ -210,7 +210,7 @@ const STATIC = [
   {date:'2026-03-31',cat:'audit',title:'외부감사 완료 목표',note:'감사보고서 수령',badge:'외부감사'},
   {date:'2026-03-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 4월
-  {date:'2026-04-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 신고파일 제출',badge:'기타소득'},
+  {date:'2026-04-10',cat:'tax',  title:'원천세 신고·납부',note:'4월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-04-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'4월분',badge:'정기'},
   {date:'2026-04-23',cat:'pay',  title:'법인카드 정산',note:'3월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-04-20',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-4)',note:'3차 완료분 4회 · 2.5억 (250,000,000원)',badge:'완료'},
@@ -219,7 +219,7 @@ const STATIC = [
   // 4월 결산 (10영업일 룰 첫 적용 — 실제 밀렸음)
   {date:'2026-05-08',cat:'close',title:'4월 결산 결의서 상신 마감',note:'목표 대비 지연 · 공휴일(5/1근로자, 5/5어린이날) 영향',badge:'밀렸음',delayed:true},
   // 5월
-    {date:'2026-05-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-05-11',cat:'tax',  title:'원천세 신고·납부',note:'5월분 원천세 신고·납부 (법정기한 10일, 일요일→5/11)',badge:'원천세'},
   {date:'2026-05-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'5월분',badge:'정기'},
   {date:'2026-05-23',cat:'pay',  title:'법인카드 정산',note:'4월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-05-31',cat:'invest',   title:'플렌테크 주식양수도 대금 (3차-5)',note:'3차 완료분 5회 · 약 3.1억 (314,790,384원)',badge:'완료'},
@@ -228,7 +228,7 @@ const STATIC = [
   // 5월 결산
   {date:'2026-06-04',cat:'close',title:'5월 결산 결의서 상신 마감',note:'선거일(6/3) 임시공휴일로 하루 연장',badge:'결의서'},
   // 6월
-    {date:'2026-06-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-06-10',cat:'tax',  title:'원천세 신고·납부',note:'6월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-06-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'6월분',badge:'정기'},
   {date:'2026-06-23',cat:'pay',  title:'법인카드 정산',note:'5월 사용분 · 모든 법인카드 지급요청일 6/23 통일',badge:'정기'},
   {date:'2026-06-27',cat:'corp', title:'벤처기업확인서 만료 · 갱신 필요',note:'제20230628030025호 만료 · 스톡옵션 과세특례 유지 위해 만료 전 갱신 필수 (법무팀 협업)',badge:'법인서류'},
@@ -238,7 +238,7 @@ const STATIC = [
   {date:'2026-07-03',cat:'close',title:'6월 결산 결의서 상신 마감',note:'익월 3영업일',badge:'결의서'},
   {date:'2026-07-14',cat:'close',title:'6월 결산 장부 마감',note:'익월 10영업일',badge:'장부마감'},
   // 7월
-    {date:'2026-07-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-07-10',cat:'tax',  title:'원천세 신고·납부',note:'7월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-07-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'7월분',badge:'정기'},
   {date:'2026-07-03',cat:'invest',   title:'국민은행 단기차입금 만기 (7월)',note:'앳홈 2.85억 + 레이드 1.5억 = 총 4.35억 만기 · 전액 상환 예정',badge:'대출만기'},
   {date:'2026-07-22',cat:'invest',   title:'🚨 BW 만기 (IMMHK)',note:'잔액 약 21.6억 (2,156,821,464원) 상환 · Net cash out ≈12억 · 신주발행 병행',badge:'BW만기'},
@@ -247,7 +247,7 @@ const STATIC = [
   {date:'2026-07-31',cat:'tax',  title:'배당금 수익 금융소득지급명세서 미제출 가산세',note:'금융소득지급명세서 미제출 건 가산세 납부 · 4,000만원',badge:'가산세'},
   {date:'2026-07-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 8월
-    {date:'2026-08-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-08-10',cat:'tax',  title:'원천세 신고·납부',note:'8월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-08-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'8월분',badge:'정기'},
   {date:'2026-08-23',cat:'pay',  title:'법인카드 정산',note:'7월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-08-31',cat:'tax',  title:'법인세 중간예납 납부',note:'직전 사업연도 법인세 1/2',badge:'법인세'},
@@ -255,24 +255,24 @@ const STATIC = [
   {date:'2026-08-25',cat:'invest',   title:'국민은행 단기차입금 만기 (니즈랩)',note:'니즈랩 1.2억 만기 · 전액 상환 예정',badge:'대출만기'},
   {date:'2026-08-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 9월
-    {date:'2026-09-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-09-10',cat:'tax',  title:'원천세 신고·납부',note:'9월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-09-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'9월분',badge:'정기'},
   {date:'2026-09-23',cat:'pay',  title:'법인카드 정산',note:'8월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-09-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 10월
-    {date:'2026-10-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-10-12',cat:'tax',  title:'원천세 신고·납부',note:'10월분 원천세 신고·납부 (법정기한 10일, 토요일+개천절→10/12)',badge:'원천세'},
   {date:'2026-10-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'10월분',badge:'정기'},
   {date:'2026-10-10',cat:'invest',   title:'스퀘어 매각대금 수입',note:'약 11.6억 수령 예정',badge:'자산매각'},
   {date:'2026-10-23',cat:'pay',  title:'법인카드 정산',note:'9월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-10-25',cat:'tax',  title:'부가세 2기 예정 신고·납부',note:'납부 예정액 약 28.4억',badge:'부가세'},
   {date:'2026-10-31',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 11월
-    {date:'2026-11-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-11-10',cat:'tax',  title:'원천세 신고·납부',note:'11월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-11-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'11월분',badge:'정기'},
   {date:'2026-11-23',cat:'pay',  title:'법인카드 정산',note:'10월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-11-30',cat:'pay',  title:'재고·물류비·광고비 정기지급',note:'당월 세금계산서 기준',badge:'정기'},
   // 12월
-    {date:'2026-12-03',cat:'tax',  title:'기타소득 신고 마감',note:'월별 기타소득 원천징수 신고',badge:'기타소득'},
+    {date:'2026-12-10',cat:'tax',  title:'원천세 신고·납부',note:'12월분 원천세 신고·납부',badge:'원천세'},
   {date:'2026-12-10',cat:'pay',  title:'임직원 개인정산비 지급',note:'12월분',badge:'정기'},
   {date:'2026-12-23',cat:'pay',  title:'법인카드 정산',note:'11월 사용분 · 개인/팀 법인카드 대금 출금',badge:'정기'},
   {date:'2026-12-17',cat:'invest',   title:'기업은행 단기차입금 만기 (12월)',note:'앳홈 30억 (3,000,000,000원) 만기 · 보증부대출',badge:'대출만기'},
@@ -409,25 +409,4 @@ function render(cat) {
           ${e.note ? `<div class="event-note">${e.note}</div>` : ''}
         </div>
         ${e.badge ? `<span class="event-badge">${e.badge}</span>` : ''}`;
-      grid.appendChild(card);
-    });
-    block.appendChild(grid);
-    timeline.appendChild(block);
-  });
-}
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cat = btn.dataset.cat;
-    refreshUpcoming(cat);
-    render(cat);
-  });
-});
-
-refreshUpcoming('all');
-render('all');
-</script>
-</body>
-</html>
+      grid.appendCh
