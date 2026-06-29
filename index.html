@@ -409,4 +409,27 @@ function render(cat) {
           ${e.note ? `<div class="event-note">${e.note}</div>` : ''}
         </div>
         ${e.badge ? `<span class="event-badge">${e.badge}</span>` : ''}`;
-      grid.appendCh
+      grid.appendChild(card);
+    });
+    block.appendChild(grid);
+    timeline.appendChild(block);
+  });
+}
+
+// ── 필터 버튼 ────────────────────────────────────────────────────
+let currentCat = 'all';
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    render(currentCat);
+    refreshUpcoming(currentCat);
+  });
+});
+
+render('all');
+refreshUpcoming('all');
+</script>
+</body>
+</html>
