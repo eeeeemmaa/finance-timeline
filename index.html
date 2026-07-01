@@ -279,6 +279,19 @@ const STATIC = [
 
 const DYNAMIC = [];
 
+// 말일 직전 영업일 계산
+function lastBizDay(year, month) {
+  let d = new Date(year, month, 0); // 해당 월의 마지막 날
+  while (!isBizDay(d)) d = addDays(d, -1);
+  return d;
+}
+
+// 재고·물류비·광고비: 말일 기준 (휴일이면 직전 영업일)
+for (let m = 1; m <= 12; m++) {
+  const d = lastBizDay(2026, m);
+  DYNAMIC.push({date:toYMD(d), cat:'pay', title:'재고·물류비·광고비 정기지급', note:'당월 세금계산서 기준', badge:'정기'});
+}
+  
 // 결산 마감 일정 — 7월 결산(8월 마감)부터 12월 결산(1월 마감)까지 자동 계산
 // (4~6월은 Slack 확인된 날짜로 STATIC에 이미 반영)
 for (let closeMonth = 7; closeMonth <= 12; closeMonth++) {
